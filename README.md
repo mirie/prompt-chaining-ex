@@ -4,7 +4,7 @@ An empty Python project managed with [uv](https://docs.astral.sh/uv/).
 
 Requires Python 3.12 or newer. No application code yet.
 
-Includes LangChain, LangChain Community, LangChain OpenAI, and LangGraph.
+Includes LangChain, LangChain OpenAI, and LangGraph.
 
 ## Get started
 
