@@ -17,7 +17,7 @@ def build_chain(llm):
     )
     prompt_transform = ChatPromptTemplate.from_template(
         "Transform the following specifications into a JSON object with "
-        "'cpu', 'memory', and 'storage' as keys. Use string values for known "
+        "'cpu', 'memory', 'display', and 'storage' as keys. Use string values for known "
         "specifications and null for missing ones. Return only valid JSON, "
         "without Markdown formatting:\n\n{specifications}"
     )
@@ -40,13 +40,16 @@ def main():
         model=os.getenv("OPENAI_MODEL", "gpt-4.1-mini"), temperature=0
     )
     full_chain = build_chain(llm)
-    input_text = (
-        "The new laptop model features a 3.5 GHz octa-core processor, "
-        "16GB of RAM, and a 1TB NVMe SSD."
-    )
-    final_result = full_chain.invoke({"text_input": input_text})
-    print("\n--- Final JSON Output ---")
-    print(json.dumps(final_result, indent=2))
+    input_text1 = "The new laptop model features a 3.5 GHz octa-core processor, and 16GB of RAM, a 1TB NVMe SSD, and a 14-inch OLED input."
+    input_text2 = "The new smartphone features a 3.2 GHz hexa-core processor, 8GB of RAM, a 256GB UFS storage drive, and a 6.5-inch AMOLED display."
+    input_text3 = "The new gaming desktop features a 4.7 GHz 12-core processor, 32GB of RAM, a 2TB NVMe SSD, and a 27-inch QLED monitor."
+
+    input_texts = [input_text1, input_text2, input_text3]
+
+    for input_text in input_texts:
+        final_result = full_chain.invoke({"text_input": input_text})
+        print("\n--- Final JSON Output ---")
+        print(json.dumps(final_result, indent=2))
 
 
 if __name__ == "__main__":
