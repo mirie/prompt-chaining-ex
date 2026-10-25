@@ -1,4 +1,7 @@
-"""Extract laptop specifications and turn them into JSON using two prompts."""
+"""Simple example to explore prompt chaining: Extract laptop specifications 
+   and turn them into JSON using two prompts.
+   Source: Agentic Design Patterns / Antonio Gulli tutorial / code sample
+"""
 
 import json
 import os
